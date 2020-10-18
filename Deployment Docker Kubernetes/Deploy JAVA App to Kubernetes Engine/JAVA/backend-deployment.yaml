@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: quiz-backend
+  labels:
+    app: quiz-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: quiz
+        tier: backend
+    spec:
+      containers:
+      - name: quiz-backend
+        image: [BACKEND_IMAGE_IDENTIFIER]
+        imagePullPolicy: Always
+        env:
+          - name: GCLOUD_PROJECT
+            value: [GCLOUD_PROJECT]
+          - name: GCLOUD_BUCKET
+            value: [GCLOUD_BUCKET] 
